@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Mohamed — Mechanical Power Engineer</title>
+  <meta name="description" content="Mechanical Power Engineering student at Ain Shams University specializing in thermal systems, mechanical design, and embedded systems integration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080a0f;
+      --bg2: #0d1017;
+      --bg3: #111420;
+      --surface: #161b28;
+      --surface2: #1d2436;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --text: #eef0f5;
+      --text2: #8b90a0;
+      --text3: #5a5f70;
+      --accent: #e8793a;
+      --accent2: #c85f20;
+      --accent-glow: rgba(232,121,58,0.15);
+      --accent-glow2: rgba(232,121,58,0.05);
+      --teal: #2dd4bf;
+      --teal-dim: rgba(45,212,191,0.12);
+      --blue: #60a5fa;
+      --blue-dim: rgba(96,165,250,0.1);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r: 10px;
+      --r2: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent-glow); color: var(--accent); }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,10,15,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+    }
+    .orb1 { width: 600px; height: 600px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(232,121,58,0.4), transparent 70%); }
+    .orb2 { width: 400px; height: 400px; bottom: -100px; left: -50px; background: radial-gradient(circle, rgba(45,212,191,0.2), transparent 70%); }
+    .grid-overlay {
+      position: absolute; inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--teal);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-title .line2 { color: var(--accent); display: block; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text2);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s forwards;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,121,58,0.3); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.8s forwards;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--text3); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--text2);
+      font-size: 1rem;
+      max-width: 540px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ─── FADE IN OBSERVER ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--text2);
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .highlight-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .highlight-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--accent-glow);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .highlight-title { font-size: 0.875rem; font-weight: 500; color: var(--text); }
+    .highlight-desc { font-size: 0.78rem; color: var(--text3); margin-top: 0.2rem; }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .profile-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #f59e0b);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .profile-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .profile-role { font-size: 0.85rem; color: var(--text3); margin-top: 0.25rem; }
+    .profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text2);
+    }
+    .about-info-row {
+      display: flex; gap: 0.75rem; align-items: center;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: var(--text3);
+    }
+    .about-info-row span { color: var(--text2); }
+
+    /* ─── SKILLS ─── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-category {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-category::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-glow2);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .skill-category:hover { border-color: rgba(232,121,58,0.3); transform: translateY(-3px); }
+    .skill-category:hover::after { opacity: 1; }
+    .skill-cat-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      position: relative; z-index: 1;
+    }
+    .skill-cat-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .skill-cat-name { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .skill-list {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      position: relative; z-index: 1;
+    }
+    .skill-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      font-size: 0.775rem;
+      font-family: var(--font-mono);
+      color: var(--text2);
+      transition: all 0.15s;
+    }
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── PROJECTS ─── */
+    #projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover { border-color: rgba(232,121,58,0.25); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .project-card:hover::before { opacity: 1; }
+    .project-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+    .project-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text3);
+      letter-spacing: 0.05em;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--text2);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .project-impact {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem 1rem;
+      background: var(--accent-glow2);
+      border: 1px solid rgba(232,121,58,0.15);
+      border-radius: 8px;
+    }
+    .impact-icon { color: var(--accent); font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+    .impact-text { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .stack-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--teal);
+    }
+
+    /* ─── EDUCATION ─── */
+    #education { background: var(--bg); }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2rem 2.5rem;
+      display: flex; gap: 2rem; align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--teal));
+    }
+    .edu-logo {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .edu-body {}
+    .edu-degree { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .edu-uni { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-top: 0.2rem; }
+    .edu-meta { display: flex; gap: 1.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+    .edu-meta-item { font-size: 0.82rem; color: var(--text3); display: flex; align-items: center; gap: 0.4rem; }
+    .edu-courses {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .edu-courses-label { font-size: 0.78rem; font-family: var(--font-mono); color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .edu-courses-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .course-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text2);
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { background: var(--bg2); }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+    .cert-card:hover { border-color: rgba(45,212,191,0.3); transform: translateY(-2px); }
+    .cert-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--teal-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .cert-name { font-size: 0.9rem; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .cert-desc { font-size: 0.78rem; color: var(--text3); margin-top: 0.4rem; line-height: 1.5; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--bg); position: relative; overflow: hidden; }
+    .contact-orb {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(232,121,58,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      text-align: center;
+      position: relative; z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .contact-inner .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+    .contact-inner .section-desc { max-width: 100%; margin: 1rem auto 2.5rem; text-align: center; }
+    .contact-links {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 0.75rem 1.25rem;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-link svg { width: 16px; height: 16px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    .footer-text { font-size: 0.8rem; color: var(--text3); }
+    .footer-text span { color: var(--accent); }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      margin: 0 2rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; gap: 1rem;
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: rgba(8,10,15,0.97);
+        padding: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-highlights { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .edu-card { flex-direction: column; gap: 1.25rem; }
+      .contact-links { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .about-highlights { grid-template-columns: 1fr; }
+      .hero { padding: 5rem 1.25rem 3rem; }
+      section { padding: 4rem 1.25rem; }
+      nav { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#"><span>AM</span> — Portfolio</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:adamzaky0041@gmail.com">Get in touch</a>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="grid-overlay"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Available for internships &amp; co-ops
+    </div>
+    <h1 class="hero-title">
+      Engineering systems<br/>
+      <span class="line2">that actually work.</span>
+    </h1>
+    <p class="hero-sub">
+      I'm <strong style="color:var(--text);font-weight:500;">Adam Mohamed</strong> — Mechanical Power Engineering student at Ain Shams University, building projects at the intersection of thermodynamics, mechanical design, and embedded systems.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+        View my projects
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Say hello
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">6<span>+</span></span>
+        <span class="stat-label">Engineering Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10<span>+</span></span>
+        <span class="stat-label">CAD / CAE Tools</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3<span>+</span></span>
+        <span class="stat-label">Certifications</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2027</span>
+        <span class="stat-label">Expected Graduation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-tag">// about me</span>
+        <h2 class="section-title">Building at the edge of mechanical & digital</h2>
+        <p>I'm a Mechanical Power Engineering student at <strong>Ain Shams University, Cairo</strong> with a genuine obsession for systems that bridge physical and digital worlds — from heat cycles and fluid dynamics to microcontroller-driven actuators.</p>
+        <p>My projects go beyond coursework. I've designed and fabricated <strong>fully functional prototypes</strong> — a pneumatically controlled wind turbine with FEA-validated structure, an air-powered vehicle with wireless safety logic, and autonomous robots with multi-modal control. If there's a system that spins, flows, or fires — I want to understand and build it.</p>
+        <p>I'm actively seeking <strong>internship or co-op opportunities</strong> in energy systems, power generation, or industrial automation where I can contribute real engineering value from day one.</p>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon">⚙️</div>
+            <div class="highlight-title">Thermal Systems</div>
+            <div class="highlight-desc">Applied thermodynamics & exergy analysis</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🔩</div>
+            <div class="highlight-title">Mechanical Design</div>
+            <div class="highlight-desc">SolidWorks, Inventor, Ansys FEA</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🤖</div>
+            <div class="highlight-title">Embedded Systems</div>
+            <div class="highlight-desc">Arduino, ESP-32, C++, Python</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">💨</div>
+            <div class="highlight-title">Fluid & Pneumatics</div>
+            <div class="highlight-desc">Hydraulic & pneumatic control systems</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-card-main">
+          <div class="profile-circle">AM</div>
+          <div class="profile-name">Adam Mohamed</div>
+          <div class="profile-role">Mechanical Power Engineering Student</div>
+          <div class="profile-tags">
+            <span class="tag">Thermodynamics</span>
+            <span class="tag">CAD/CAE</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">HVAC</span>
+            <span class="tag">Pneumatics</span>
+            <span class="tag">Python</span>
+            <span class="tag">MATLAB</span>
+          </div>
+          <div class="about-info-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Cairo, Egypt</span>
+          </div>
+          <div class="about-info-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+            <span>Ain Shams University</span>
+          </div>
+          <div class="about-info-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 15.1 19.79 19.79 0 0 1 1.87 6.5 2 2 0 0 1 3.84 4.34h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 18.92z"/></svg>
+            <span>+20 111 935 0066</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// technical skills</span>
+      <h2 class="section-title">Tools &amp; Technologies</h2>
+      <p class="section-desc">From simulation environments to microcontroller firmware — a broad toolkit for end-to-end engineering projects.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(232,121,58,0.1);">📐</div>
+          <span class="skill-cat-name">CAD / CAE</span>
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">SolidWorks</span>
+          <span class="skill-pill">Autodesk Inventor</span>
+          <span class="skill-pill">Fusion 360</span>
+          <span class="skill-pill">AutoCAD</span>
+          <span class="skill-pill">Revit</span>
+          <span class="skill-pill">Ansys FEA</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(45,212,191,0.1);">📊</div>
+          <span class="skill-cat-name">Simulation &amp; Analysis</span>
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">MATLAB / Octave</span>
+          <span class="skill-pill">EES</span>
+          <span class="skill-pill">Python (NumPy/SciPy)</span>
+          <span class="skill-pill">Thermo Cycle Sim</span>
+          <span class="skill-pill">Exergy Analysis</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-3">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(96,165,250,0.1);">💻</div>
+          <span class="skill-cat-name">Embedded &amp; Programming</span>
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Arduino UNO</span>
+          <span class="skill-pill">ESP-32</span>
+          <span class="skill-pill">Sensor Integration</span>
+          <span class="skill-pill">Bluetooth/Wireless</span>
+          <span class="skill-pill">Solenoid Control</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(232,121,58,0.1);">⚡</div>
+          <span class="skill-cat-name">Engineering Domains</span>
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">Thermodynamic Cycles</span>
+          <span class="skill-pill">Fluid Mechanics</span>
+          <span class="skill-pill">Turbomachinery</span>
+          <span class="skill-pill">HVAC Systems</span>
+          <span class="skill-pill">Pneumatic Control</span>
+          <span class="skill-pill">Stress Analysis</span>
+          <span class="skill-pill">BIM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// selected projects</span>
+      <h2 class="section-title">What I've built</h2>
+      <p class="section-desc">Real prototypes, validated simulations, and production-level engineering — not just theory.</p>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div class="project-icon">🌬️</div>
+          <span class="project-date">Spring 2026</span>
+        </div>
+        <div class="project-title">Pneumatic Wind Turbine with Automated Tracking</div>
+        <div class="project-desc">Engineered a 3-DOF pneumatically actuated wind turbine with real-time wind-direction tracking. Designed solenoid-actuated double-acting cylinders controlled via 5/2 and 5/3 directional valves — the structure fully pivots to face the wind automatically.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">FEA-validated structural integrity under peak wind loads. All components modeled in Inventor, fabricated via 3D printing and woodworking.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Arduino UNO</span>
+          <span class="stack-tag">Ansys FEA</span>
+          <span class="stack-tag">Autodesk Inventor</span>
+          <span class="stack-tag">Pneumatics</span>
+          <span class="stack-tag">3D Printing</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header">
+          <div class="project-icon">❄️</div>
+          <span class="project-date">Spring 2026</span>
+        </div>
+        <div class="project-title">Dual-Loop Heat-Powered Refrigeration Cycle</div>
+        <div class="project-desc">Simulated a dual-loop R-134a refrigeration cycle applying First and Second Law thermodynamic analysis. Generated T-S diagrams and performance maps across 10+ operating conditions to characterize cycle efficiency.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">Identified maximum-COP operating set-point while minimizing exergy destruction across all cycle components.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">EES</span>
+          <span class="stack-tag">Thermodynamic Analysis</span>
+          <span class="stack-tag">Exergy Analysis</span>
+          <span class="stack-tag">T-S Diagrams</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div class="project-icon">🚀</div>
+          <span class="project-date">Fall 2025</span>
+        </div>
+        <div class="project-title">Air-Powered Vehicle — "The Odyssey"</div>
+        <div class="project-desc">Co-developed a compressed-air vehicle from scratch. Fabricated stainless-steel pressure tanks using Lamé equations with Python validation. Optimized nozzle geometry for maximum jet exit velocity and programmed an ESP-32 for real-time solenoid actuation.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">Structural safety factor above 3 on pressure tanks. Wireless sensor communication and embedded safety logic fully operational.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">ESP-32</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Ansys</span>
+          <span class="stack-tag">Autodesk Inventor</span>
+          <span class="stack-tag">MATLAB</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header">
+          <div class="project-icon">🤖</div>
+          <span class="project-date">Fall 2025</span>
+        </div>
+        <div class="project-title">Smart Autonomous &amp; Bluetooth-Controlled Car</div>
+        <div class="project-desc">Developed a four-wheel prototype integrating Bluetooth remote control, accelerometer-based gesture recognition, IR line-tracking, and ultrasonic obstacle avoidance — all in one system with seamless mode-switching logic.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">Reliable operation confirmed across all navigation modes through systematic multi-mode testing.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Arduino UNO</span>
+          <span class="stack-tag">Embedded C++</span>
+          <span class="stack-tag">SolidWorks</span>
+          <span class="stack-tag">Ultrasonic / IR Sensors</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div class="project-icon">🌀</div>
+          <span class="project-date">Spring 2025</span>
+        </div>
+        <div class="project-title">Hydrodynamic Fluid Coupler Prototype</div>
+        <div class="project-desc">Designed and simulated a hydrodynamic fluid coupling system in SolidWorks, modeling impeller and turbine geometry, analyzing fluid-driven torque transmission, and delivering a functional prototype demonstrating contact-free motion transfer.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">Fully functional prototype demonstrating smooth, contact-free torque transmission between input and output shafts.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">SolidWorks</span>
+          <span class="stack-tag">Fluid Dynamics Simulation</span>
+          <span class="stack-tag">Torque Analysis</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header">
+          <div class="project-icon">🔧</div>
+          <span class="project-date">Spring 2025</span>
+        </div>
+        <div class="project-title">Hand Drill Reverse Engineering</div>
+        <div class="project-desc">Reverse-engineered a complete hand-drill assembly from scratch, producing a precise multi-part CAD model covering gears, spindle, casing, assembly constraints, exploded views, and full manufacturability annotations.</div>
+        <div class="project-impact">
+          <span class="impact-icon">▲</span>
+          <span class="impact-text">Complete digital twin of a commercial drill — a study in mechanical precision, tolerancing, and design intent reconstruction.</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">SolidWorks</span>
+          <span class="stack-tag">Autodesk Inventor</span>
+          <span class="stack-tag">GD&amp;T</span>
+          <span class="stack-tag">Exploded Views</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// education</span>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-logo">🎓</div>
+      <div class="edu-body" style="flex:1;">
+        <div class="edu-degree">B.Sc. Mechanical Power Engineering</div>
+        <div class="edu-uni">Faculty of Engineering, Ain Shams University</div>
+        <div class="edu-meta">
+          <div class="edu-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Expected: June 2027
+          </div>
+          <div class="edu-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cairo, Egypt
+          </div>
+        </div>
+        <div class="edu-courses">
+          <div class="edu-courses-label">Relevant Coursework</div>
+          <div class="edu-courses-list">
+            <span class="course-tag">Applied Thermodynamics</span>
+            <span class="course-tag">Combustion Engineering</span>
+            <span class="course-tag">Heat Transfer</span>
+            <span class="course-tag">Fluid Mechanics</span>
+            <span class="course-tag">Turbomachinery</span>
+            <span class="course-tag">Hydraulic &amp; Pneumatic Control</span>
+            <span class="course-tag">Control Systems (MATLAB)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// certifications</span>
+      <h2 class="section-title">Courses &amp; Certifications</h2>
+      <p class="section-desc">Supplementary training that extends beyond the classroom.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-icon">🔩</div>
+        <div class="cert-name">Fundamentals of Mechanical Maintenance</div>
+        <div class="cert-desc">Inspection, lubrication, fault diagnosis, preventive maintenance strategies</div>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-icon">🌡️</div>
+        <div class="cert-name">HVAC Fundamentals</div>
+        <div class="cert-desc">Thermodynamic cycles, psychrometrics, load calculations, system components, energy efficiency</div>
+      </div>
+      <div class="cert-card reveal reveal-delay-3">
+        <div class="cert-icon">🏗️</div>
+        <div class="cert-name">BIM — Building Information Modeling</div>
+        <div class="cert-desc">Revit-based 3D modeling, multi-discipline collaboration, project lifecycle management</div>
+      </div>
+      <div class="cert-card reveal reveal-delay-4">
+        <div class="cert-icon">🏎️</div>
+        <div class="cert-name">Formula Car Design &amp; Simulation</div>
+        <div class="cert-desc">SolidWorks &amp; Ansys aerodynamics, chassis design, motion analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-orb"></div>
+  <div class="container">
+    <div class="contact-inner reveal">
+      <span class="section-tag" style="display:block;text-align:center;margin-bottom:.75rem;">// let's connect</span>
+      <h2 class="section-title">Open to opportunities</h2>
+      <p class="section-desc">I'm actively looking for internship and co-op roles in energy, power generation, or industrial automation. Whether you have a position or just want to talk engineering — my inbox is open.</p>
+      <div class="contact-links">
+        <a href="mailto:adamzaky0041@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          adamzaky0041@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/adam-zaky" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/adam-zaky
+        </a>
+        <a href="tel:+201119350066" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 15.1 19.79 19.79 0 0 1 1.87 6.5 2 2 0 0 1 3.84 4.34h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 18.92z"/></svg>
+          +20 111 935 0066
+        </a>
+        <a href="mailto:adamzaky0041@gmail.com?subject=Resume Request" class="contact-link" style="border-color:rgba(232,121,58,0.4);color:var(--accent);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">
+    Designed &amp; built by <span>Adam Mohamed</span> · Cairo, Egypt · 2025
+  </div>
+</footer>
+
+<script>
+  // ─── NAV HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // ─── SCROLL REVEAL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ─── SMOOTH ACTIVE NAV ───
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  const scrollObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + e.target.id
+            ? 'var(--text)'
+            : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => scrollObs.observe(s));
+
+  // ─── CLOSE NAV ON LINK CLICK ───
+  navAs.forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
